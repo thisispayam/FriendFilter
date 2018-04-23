@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import CardList from './CardList';
-import Searchbox from './Searchbox';
+import CardList from '../components/CardList';
+import Searchbox from '../components/Searchbox';
 
 class App extends Component {
   constructor(){
@@ -27,8 +27,8 @@ componentDidMount(){
     this.setState({ searchfield: event.target.value})
   }
   render() {
-    const filteredRobots = this.state.robots.filter( robots => {
-      return robots.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+    const filteredRobots = this.state.robots.filter( robot => {
+      return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
     })
     return (
       <div className="App">
