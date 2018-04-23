@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
 import './App.css';
-import {robots} from './robots';
 import CardList from './CardList';
 import Searchbox from './Searchbox';
 
 class App extends Component {
   constructor(){
-    super()
+    super();
     this.state = {
-      robots: robots,
+      robots: [],
       searchfield:''
     }
   }
 
+//from the react lifecycle methods which always runs after constructor
+componentDidMount(){
+  fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => {
+    return response.json();
+  })
+  .then(users => {
+    this.setState({robots:users})
+  })
+
+}
   onSearchChange = (event) => {
     this.setState({ searchfield: event.target.value})
   }
